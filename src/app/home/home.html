@@ -1,0 +1,39 @@
+<br><br><label for="">Comment:</label>
+<input type="text" [(ngModel)]="str" name="" id="">
+<p>Entered by you:{{str}}</p>
+<app-about></app-about>
+
+<div class="container my-3">
+  <div class="mb-3">
+    <label for="categorySelect">Filter by Category:</label>
+    <select id="categorySelect" class="form-control w-25" [(ngModel)]="selectedCategory">
+      <option value="">All</option>
+      <option value="men's clothing">Men's Clothing</option>
+      <option value="women's clothing">Women's Clothing</option>
+      <option value="electronics">Electronics</option>
+      <option value="jewelery">Jewelry</option>
+    </select>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <ng-container  *ngFor="let p of products">
+      <div class="col-md-4 mb-3"*ngIf=" !selectedCategory || p.category === selectedCategory">
+        <div class="card">
+          <div class="card-header">
+            <img [src]="p.image" alt="" class="card-img-top" height="200">
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">{{p.title}}</h2>
+            <p>{{p.description}}</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-warning">Add to Cart</button>
+            <button class="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
